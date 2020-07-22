@@ -88,7 +88,7 @@ def print_json(obj):
 
 
 def load_json(path):
-    LOG.info('load json from %s', path)
+    LOG.debug('load json from %s', path)
     with open(path) as f:
         return json.load(f)
 
