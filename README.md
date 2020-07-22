@@ -1,6 +1,8 @@
-# charm upgrade
+# charm upgrade helper
 
-charm upgrade helper.
+Generate a table with charm revisions in upgrade order.
+
+![charm_upgrade.png](./charm_upgrade.png)
 
 ## Usage
 
@@ -9,6 +11,7 @@ charm upgrade helper.
 
 The script relies on output from `juju status --format json`.
 If no file specified, it will run the cmd to get output.
+
 
 ## Update json files
 
@@ -25,25 +28,24 @@ The updated json files should be commited to git.
 
 ## GitHub API rate limiting and authentication
 
-We use GitHub API to update `branch_commit.json`, which has [rate limiting](https://developer.github.com/v3/#rate-limiting):
+While updating `branch_commit.json`, we use GitHub API, which has [rate limiting](https://developer.github.com/v3/#rate-limiting):
 
 1) for annoymous user: 60 requests/hour (almost useless)
 2) for authenticated user: 5000 requests/hour (we need this)
 
 To get authenticated, you can set envvars in either way:
 
-1) OAuth via [Personal access token](https://github.com/settings/tokens) (recommended)
+1) OAuth with [Personal access token](https://github.com/settings/tokens) (recommended)
 
 ```
-GITHUB_TOKEN=<YOUR-TOKEN>
+export GITHUB_TOKEN=<YOUR-TOKEN>
 ```
-
 
 2) Basic Auth
 
 ```
-GITHUB_USER=<YOUR-USERNAME>
-GITHUB_PASS=<YOUR-PASSWORD>
+export GITHUB_USER=<YOUR-USERNAME>
+export GITHUB_PASS=<YOUR-PASSWORD>
 ```
 
 
@@ -51,6 +53,7 @@ GITHUB_PASS=<YOUR-PASSWORD>
 
 openstack charm git repo has release branches, but charmstore only has linear/incremental revision numbers.
 This will cause problem when a branch updated for backport patches.
+
 Let's say we have following git branchs and charmstore revisions for a charm:
 
 - 20.02 -> commit1 -> 1
