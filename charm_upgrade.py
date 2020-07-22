@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-import os
-from os.path import abspath, dirname, join, isfile
 import sys
 import time
 import json
 import argparse
 import subprocess
 import logging
+from os import getenv
+from os.path import abspath, dirname, join
 from collections import defaultdict
 
 import requests
@@ -154,9 +154,9 @@ def get_repo_branch_commit_map(repo, owner='openstack', branch_prefix='stable'):
         owner=owner, repo=repo, branch_prefix=branch_prefix)
     LOG.debug(url)
 
-    github_token = os.getenv('GITHUB_TOKEN')
-    github_user = os.getenv('GITHUB_USER')
-    github_pass = os.getenv('GITHUB_PASS')
+    github_token = getenv('GITHUB_TOKEN')
+    github_user = getenv('GITHUB_USER')
+    github_pass = getenv('GITHUB_PASS')
 
     if github_token:
         # https://developer.github.com/v3/#oauth2-token-sent-in-a-header
