@@ -435,7 +435,7 @@ def main():
         data['charm-uri'] = charm_uri
         data['order'] = ORDERS.get(charm_name, ORDER_MAX)  # make it large to sort at last
         data['charm-release'] = 'NA'
-        data['units'] = len(app_data.get('units', {}))
+        data['units'] = len(app_data.get('units', {})) or ''
         apps.append(data)
 
     branch_to_revision = load_json(FILE_BRANCH_REVISION)
