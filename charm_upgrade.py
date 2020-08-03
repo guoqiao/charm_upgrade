@@ -100,7 +100,7 @@ def save_json(path, data):
 
 def get_cmd_output(cmd, is_json=False):
     # cmd is a list
-    LOG.info('run cmd: %s', ' '.join(cmd))
+    LOG.debug('run cmd: %s', ' '.join(cmd))
     output = subprocess.check_output(cmd).decode('utf8')
     if is_json:
         output = json.loads(output)
