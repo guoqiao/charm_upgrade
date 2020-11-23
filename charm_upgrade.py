@@ -21,7 +21,7 @@ LOG_FMT = '%(asctime)s %(levelname)s: %(message)s'
 NA = '--'
 ORDER_MAX = 999
 # only care about these branches
-BRANCHES = ['19.04', '19.07', '19.10', '20.02', '20.05']
+BRANCHES = ['19.04', '19.07', '19.10', '20.02', '20.05', '20.08', '20.10']
 
 HERE = abspath(dirname(__file__))
 # branch: github release branch short name, e.g.: 20.05
