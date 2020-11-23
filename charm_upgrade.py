@@ -402,6 +402,10 @@ def main():
     )
 
     parser.add_argument(
+        '-v', '--verbose', action='store_true',
+        help='Be verbose')
+
+    parser.add_argument(
         '-b', '--update-branch-commit', dest='update_branch_commit', action='store_true',
         help='Update charm branch commit mapping with github api, save to file')
 
@@ -421,10 +425,6 @@ def main():
         '-s', '--status-json-file',
         dest='status_json_file',
         help='Load juju status json data from this file')
-
-    parser.add_argument(
-        '-v', '--verbose', action='store_true',
-        help='Be verbose')
 
     cli = parser.parse_args()
     logging.basicConfig(level=['INFO', 'DEBUG'][cli.verbose], format=LOG_FMT)
