@@ -31,27 +31,53 @@ FILE_BRANCH_COMMIT = join(HERE, 'branch_commit.json')
 FILE_REVISION_COMMIT = join(HERE, 'revision_commit.json')
 FILE_BRANCH_REVISION = join(HERE, 'branch_revision.json')
 
+"""
+The following order is the most recommended:
+
+- keystone
+- glance
+- nova
+- neutron
+- cinder
+- horizon
+- heat
+
+ref: https://superuser.openstack.org/articles/openstack-upgrading-tutorial-11-pitfalls-and-solutions/
+"""
+
 # will upgrade in this order
 OPENSTACK_CHAMRS = [
     "barbican-vault", "barbican",
+
     "keystone-ldap", "keystone",
+
     "rabbitmq-server",
-    "nova-cloud-controller",
-    "nova-compute",
-    "neutron-openvswitch",
-    "neutron-api",
-    "neutron-gateway",
-    "octavia-dashboard", "octavia",
-    "cinder-backup", "cinder-ceph", "cinder",
+
     "glance",
-    "heat",
-    "aodh",
+
+    "nova-cloud-controller",
+
+    "designate-bind", "designate",
+    "octavia-dashboard", "octavia",
+    "neutron-openvswitch", "neutron-api", "neutron-gateway",
+
+    "cinder-backup", "cinder-ceph", "cinder",
+
+    "ceph-mon", "ceph-radosgw", "ceph-fs", "ceph-osd",
+
     "swift-proxy", "swift-storage",
-    "ceph-mon", "ceph-radosgw", "ceph-osd",
+
+    "openstack-dashboard",
+    "heat",
+
+    "nova-compute",
+
+
+
+    "aodh",
     "ceilometer-agent", "ceilometer",
     "gnocchi",
-    "designate-bind", "designate",
-    "openstack-dashboard",
+
     "hacluster",
     "vault",
 ]
